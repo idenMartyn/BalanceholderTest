@@ -1,4 +1,5 @@
 import PageObject.AuthorizationPage;
+import PageObject.NavigationPage;
 import PageObject.RightHolderPage;
 import com.codeborne.selenide.Configuration;
 import org.junit.Test;
@@ -28,9 +29,10 @@ public class AuthorizationPageTest {
     @Test
     public void authUser(){
         AuthorizationPage authorizationPage = open(url , AuthorizationPage.class);
+        Configuration.holdBrowserOpen = true;
         authorizationPage.login(LoginUser, PasswordUser);
-        RightHolderPage rightHolderPage = page(RightHolderPage.class);
-        rightHolderPage.clickNavBarButtonRightHolder();
+        NavigationPage navigationPage = page(NavigationPage.class);
+        navigationPage.clickNavBarButtonRightHolder();
         assertEquals("http://localhost:4200/bh/reestr-element", url());
     }
 
@@ -46,7 +48,6 @@ public class AuthorizationPageTest {
     @Test
     public void authUserWithWrongLogin(){
         AuthorizationPage authorizationPage = open(url , AuthorizationPage.class);
-//        Configuration.holdBrowserOpen = true;
         authorizationPage.login(incorrectLoginUser, incorrectPasswordUser);
         assertEquals("Неверный логин или пароль", authorizationPage.getTextElementError());
     }
