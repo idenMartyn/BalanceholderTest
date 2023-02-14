@@ -1,8 +1,13 @@
 package PageObject;
 
 import com.codeborne.selenide.SelenideElement;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Random;
 
 
 public class RightHolderPage {
@@ -12,10 +17,17 @@ public class RightHolderPage {
     private SelenideElement buttonEditRightHolder;
 
     //Строковое поле "Бухгалтер" в окне редактирования
+    @FindBy(how = How.ID, using = "RCONTRAGENT_EDIT_ACCOUNTANT")
+    private SelenideElement entryAccountantInWindowEdit;
+
     //Double-поле "Данные о балансовой стоимости прочего движимого имущества, руб." в окне редактирования
+    @FindBy(how = How.ID, using = "RCONTRAGENT_EDIT_OPOTHER")
+    private SelenideElement entryOpotherInWindowEdit;
+
     //Кнопка открытия календаря для поля "ОГРН - дата"
     //Кнопка выбора значения для поля "ОГРН - дата"
     //Кнопка отчищения поля ОГРН - дата
+
     //Кнопка выбора значения для справочника ОКВЭД
     //Кнопка отчищения поля-справочника ОКВЭД
     //Строка со значением для поля "Справочник ОКВЭД"
@@ -58,8 +70,32 @@ public class RightHolderPage {
     private SelenideElement buttonEndOfChangesRightHolder;
 
     //Поле "Бухгалтер" на вкладке Правообладатель
+    @FindBy(how = How.ID, using = "RCONTRAGENT_ACCOUNTANT")
+    private SelenideElement entryAccountantInWindowRightHolderPage;
+
     //Поле "Данные о балансовой стоимости прочего движимого имущества, руб." на вкладке Правообладатель
+    @FindBy(how = How.ID, using = "RCONTRAGENT_OPOTHER")
+    private SelenideElement entryOpotherInWindowRightHolderPage;
     //Поле "ОГРН - дата" на вкладке Правообладатель
     //Поле ОКВЭД на вкладке Правообладатель
+
+    //метод нажатия на кнопку "Редактировать"
+    public void clickButtonEditRightHolder(){
+        buttonEditRightHolder.click();
+    }
+
+    //метод ввода значения в поле Бухгалтер в окне "Редактирование контрагента"
+    public void setEntryAccountantInWindowEdit(String value){
+        entryAccountantInWindowEdit.setValue(value);
+    }
+
+    public void clickButtonSaveWindowChangeRightHolder(){
+        buttonSaveWindowChangeRightHolder.click();
+    }
+
+    //метод получения значения из атрибута "Бухгалтер" на вкладке правообладатель
+    public String getValueAccountantInWindowRightHolder(){
+        return entryAccountantInWindowRightHolderPage.getValue();
+    }
 
 }
