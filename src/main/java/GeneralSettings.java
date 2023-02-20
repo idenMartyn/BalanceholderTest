@@ -22,6 +22,7 @@ public class GeneralSettings {
     //метод авторизации в кабинете балансодержателя
     public static void authUser(){
         AuthorizationPage authorizationPage = open(url , AuthorizationPage.class);
+        Configuration.holdBrowserOpen = true;
         authorizationPage.login(LoginUser, PasswordUser);
     }
 }

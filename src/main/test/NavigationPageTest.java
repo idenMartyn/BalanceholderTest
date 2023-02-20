@@ -9,17 +9,8 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.junit.Assert.assertTrue;
 
-public class NavigationPageTest {
+public class NavigationPageTest extends BaseTest{
 
-    @Before
-    public void beforeTest(){
-        GeneralSettings.authUser();
-    }
-
-    @After
-    public void afterTest(){
-        Selenide.closeWebDriver();
-    }
 
     //Переход на вкладку правообладатель
     @Test

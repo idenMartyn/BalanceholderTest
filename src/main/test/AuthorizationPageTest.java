@@ -1,7 +1,5 @@
 import PageObject.AuthorizationPage;
 import PageObject.NavigationPage;
-import PageObject.RightHolderPage;
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.After;
 import org.junit.Test;
